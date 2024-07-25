@@ -21,7 +21,7 @@ def render_home():
 # ALL DATA WEBPAGE
 @app.route('/alldata')
 def render_alldata():
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size FROM toytable"
+    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 

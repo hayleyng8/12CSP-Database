@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "toydatabase.db": [
+      {
+        "id": "e001fd3e-b278-446c-ad77-a2e142a9d059",
+        "line": 2,
+        "version": 1,
+        "index": 101
+      }
+    ]
+  }
 }
