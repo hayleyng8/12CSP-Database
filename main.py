@@ -2,11 +2,12 @@ from flask import Flask, render_template, request
 import sqlite3
 from sqlite3 import Error
 
-from jinja2.environment import create_cache
+#from jinja2.environment import create_cache
 
 app = Flask(__name__)
 DATABASE = "toydatabase.db"
 
+# Creating a connection to the database
 def create_connection(db_file):
     try:
         connection = sqlite3.connect(db_file)
@@ -34,21 +35,8 @@ def render_alldata():
     print(toy_list)
     return render_template('alldata.html', toys=toy_list)
 
-# DECADE MADE WEBPAGE
-@app.route('/decademade')
-def render_decademade():
-    query = "SELECT DISTINCT DecadeMade, Description FROM toytable ORDER BY DecadeMade ASC"
-    con = create_connection(DATABASE)
-    cur = con.cursor()
 
-    # Query the DATABASE
-    cur.execute(query)
-    toy_list = cur.fetchall()
-    con.close()
-    print(toy_list)
-    return render_template('decademade.html', toys=toy_list)
-
-# LOCATION WEBPAPGE
+# LOCATION WEBPAGE
 @app.route('/location')
 def render_location():
     query = "SELECT Location, Description FROM toytable"
@@ -61,6 +49,7 @@ def render_location():
     con.close()
     print(toy_list)
     return render_template('location.html', toys=toy_list)
+
 
 # UNIVERSE WEBPAGE
 @app.route('/universe')
@@ -77,10 +66,10 @@ def render_universe():
     return render_template('universe.html', toys=toy_list)
 
 
-# CONDITION WEBPAGE
-@app.route('/condition')
-def render_condition():
-    query = "SELECT Description, Condition, PricePaid FROM toytable"
+# VALUATION WEBPAGE
+@app.route('/valuation')
+def render_valuation():
+    query = "SELECT Description, Condition, DecadeMade, PricePaid FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -88,9 +77,10 @@ def render_condition():
     toy_list = cur.fetchall()
     con.close()
     print(toy_list)
-    return render_template('condition.html', toys=toy_list)
+    return render_template('valuation.html', toys=toy_list)
 
-# Sorting the Decade Made on the decade made webpage
+
+# Sorting the Decade Made on the valuation webpage
 @app.route('/sort/decademade')
 def render_sortdecademade():
     sort = request.args.get('sort')
@@ -101,7 +91,7 @@ def render_sortdecademade():
     else:
         new_order = "asc"
 
-    query = "SELECT DecadeMade, Description FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Condition, DecadeMade, PricePaidn FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -109,7 +99,7 @@ def render_sortdecademade():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template("decademade.html", toys=toy_list, order=new_order)
+    return render_template("valuation.html", toys=toy_list, order=new_order)
 
 
 # Sorting the location on the location webpage
@@ -156,7 +146,7 @@ def render_sortuniverse():
     return render_template('universe.html', toys=toy_list, order=new_order)
     
 
-# Sorting the Condition in the condition webpage
+# Sorting the Condition in the valuation webpage
 @app.route('/sort/condition')
 def render_sortcondition():
     sort = request.args.get('sort')
@@ -167,7 +157,7 @@ def render_sortcondition():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Condition, PricePaid FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Condition, DecadeMade, PricePaid FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -175,10 +165,10 @@ def render_sortcondition():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template('condition.html', toys=toy_list, order=new_order)
+    return render_template('valuation.html', toys=toy_list, order=new_order)
 
 
-# Sorting the price paid in the condition page
+# Sorting the price paid in the valuation page
 @app.route('/sort/pricepaid')
 def render_sortpricepaid():
     sort = request.args.get('sort')
@@ -189,7 +179,7 @@ def render_sortpricepaid():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Condition, PricePaid FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Condition, DecadeMade, PricePaid FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -197,14 +187,16 @@ def render_sortpricepaid():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template('condition.html', toys=toy_list, order=new_order)
+    return render_template('valuation.html', toys=toy_list, order=new_order)
 
 
+# SEARCH ONLY WORKS FOR ALL DATA
+# Search function
 @app.route("/search", methods=['GET', 'POST'])
 def render_search():
     search = request.form["search"]
     title = "Search for " + search
-    query = "SELECT ID, Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable WHERE Description LIKE ? OR Location LIKE ? OR Universe LIKE ? OR Condition LIKE ? OR DecadeMade LIKE ? or Size LIKE ? or PricePaid LIKE ?"
+    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable WHERE Description LIKE ? OR Location LIKE ? OR Universe LIKE ? OR Condition LIKE ? OR DecadeMade LIKE ? or Size LIKE ? or PricePaid LIKE ?"
     search = "%" + search + "%"
     con = create_connection(DATABASE)
     cur = con.cursor()
@@ -212,7 +204,7 @@ def render_search():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template("alldata.html", toys=toy_list)
+    return render_template("alldata.html", toys=toy_list, title=title)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)

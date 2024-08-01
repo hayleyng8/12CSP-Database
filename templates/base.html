@@ -18,16 +18,13 @@
                 <a href="/alldata">All Data</a>
             </li>
             <li>
-                <a href="/decademade">Decade Made</a>
-            </li>
-            <li>
                 <a href="/location">Location</a>
             </li>
             <li>
                 <a href="/universe">Universe</a>
             </li>
             <li>
-                <a href="/condition">Condition</a>
+                <a href="/valuation">Valuation</a>
             </li>
         </ul>
         <form method="POST" action="/search">
@@ -36,6 +33,7 @@
         </form>
     </nav>
     <main>
+        <h2>{{ title }}</h2>
     {% block main %}{% endblock %}
     </main>
     <footer>
