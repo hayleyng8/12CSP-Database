@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import sqlite3
 from sqlite3 import Error
 
+from jinja2.environment import create_cache
+
 app = Flask(__name__)
 DATABASE = "toydatabase.db"
 
@@ -49,7 +51,7 @@ def render_decademade():
 # LOCATION WEBPAPGE
 @app.route('/location')
 def render_location():
-    query = "SELECT Description, Location FROM toytable"
+    query = "SELECT Location, Description FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -63,7 +65,7 @@ def render_location():
 # UNIVERSE WEBPAGE
 @app.route('/universe')
 def render_universe():
-    query = "SELECT Description, Universe FROM toytable"
+    query = "SELECT Universe, Description FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -74,29 +76,71 @@ def render_universe():
     print(toy_list)
     return render_template('universe.html', toys=toy_list)
 
-def get_toys(toy_type):
-    title = toy_type.upper()
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable WHERE type=?"
+
+# Sorting the Decade Made on the decade made webpage
+@app.route('/sort/decademade')
+def render_sortdecademade():
+    sort = request.args.get('sort')
+    order = request.args.get('order', 'asc')
+
+    if order == "asc":
+        new_order = "desc"
+    else:
+        new_order = "asc"
+
+    query = "SELECT DecadeMade, Description FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
-    cur.execute(query,(title,))
+    cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
-    print(toy_list)
-    return toy_list
 
-def get_types():
+    return render_template("decademade.html", toys=toy_list, order=new_order)
+
+
+# Sorting the location on the location webpage
+@app.route('/sort/location')
+def render_sortlocation():
+    sort = request.args.get('sort')
+    order = request.args.get('order', 'asc')
+
+    if order == 'asc':
+        new_order = 'desc'
+    else:
+        new_order = 'asc'
+
+    query = "SELECT Location, Description FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
-    query = "SELECT DISTINCT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable ORDER BY Description, Location, Universe, Condition, DecadeMade, Size, PricePaid ASC"
     cur = con.cursor()
+
     cur.execute(query)
-    records = cur.fetchall()
-    print(records)
-    for i in range(len(records)):
-        records[i] = records[i][0]
-    print(records)
-    return records
+    toy_list = cur.fetchall()
+    con.close()
+
+    return render_template('location.html', toys=toy_list, order=new_order)
+
+
+# Sorting the Universe in the universe webpage
+@app.route('/sort/universe')
+def render_sortuniverse():
+    sort = request.args.get('sort')
+    order = request.args.get('order', 'asc')
+
+    if order == 'asc':
+        new_order = 'desc'
+    else:
+        new_order = 'asc'
+
+    query = "SELECT Universe, Description FROM toytable ORDER BY " + sort + " " + order
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    cur.execute(query)
+    toy_list = cur.fetchall()
+    con.close()
+
+    return render_template('universe.html', toys=toy_list, order=new_order)
 
 @app.route("/search", methods=['GET', 'POST'])
 def render_search():
@@ -110,7 +154,7 @@ def render_search():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template("alldata.html", toys=toy_list, types=get_types())
+    return render_template("alldata.html", toys=toy_list)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)
