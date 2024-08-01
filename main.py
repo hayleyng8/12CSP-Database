@@ -77,6 +77,19 @@ def render_universe():
     return render_template('universe.html', toys=toy_list)
 
 
+# CONDITION WEBPAGE
+@app.route('/condition')
+def render_condition():
+    query = "SELECT Description, Condition, PricePaid FROM toytable"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    cur.execute(query)
+    toy_list = cur.fetchall()
+    con.close()
+    print(toy_list)
+    return render_template('condition.html', toys=toy_list)
+
 # Sorting the Decade Made on the decade made webpage
 @app.route('/sort/decademade')
 def render_sortdecademade():
@@ -141,6 +154,51 @@ def render_sortuniverse():
     con.close()
 
     return render_template('universe.html', toys=toy_list, order=new_order)
+    
+
+# Sorting the Condition in the condition webpage
+@app.route('/sort/condition')
+def render_sortcondition():
+    sort = request.args.get('sort')
+    order = request.args.get('order', 'asc')
+
+    if order == 'asc':
+        new_order = 'desc'
+    else:
+        new_order = 'asc'
+
+    query = "SELECT Description, Condition, PricePaid FROM toytable ORDER BY " + sort + " " + order
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    cur.execute(query)
+    toy_list = cur.fetchall()
+    con.close()
+
+    return render_template('condition.html', toys=toy_list, order=new_order)
+
+
+# Sorting the price paid in the condition page
+@app.route('/sort/pricepaid')
+def render_sortpricepaid():
+    sort = request.args.get('sort')
+    order = request.args.get('order', 'asc')
+
+    if order == 'asc':
+        new_order = 'desc'
+    else:
+        new_order = 'asc'
+
+    query = "SELECT Description, Condition, PricePaid FROM toytable ORDER BY " + sort + " " + order
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    cur.execute(query)
+    toy_list = cur.fetchall()
+    con.close()
+
+    return render_template('condition.html', toys=toy_list, order=new_order)
+
 
 @app.route("/search", methods=['GET', 'POST'])
 def render_search():
