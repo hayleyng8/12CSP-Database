@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block main %}
-        <h2>All Data</h2>
+
+<!--WHEN ON A PAGE LIKE VALUATION THE SEARCH WILL AUTOMATICALLY DEFAULT TO SHOW ALL DATA INSTEAD OF ONLY DATA THAT IS ON THE PAGE-->
         <table>
         <thead>
             <tr>
@@ -12,11 +13,10 @@
                 <th>Decade Made</th>
                 <th>Size</th>
                 <th>Price Paid</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
-            {% for toy in toys %}
+            {% for toy in searches %}
             <tr>
                 <td>{{  toy[0]  }}</td>
                 <td>{{  toy[1]  }}</td>
@@ -25,10 +25,8 @@
                 <td>{{  toy[4]  }}</td>
                 <td>{{  toy[5]  }}</td>
                 <td>{{  toy[6]  }}</td>
-                <td><img src="/static/image/{{toy[7]}}"></td>
             </tr>
             {% endfor %}
-
         </tbody>
         </table>
 {% endblock %}

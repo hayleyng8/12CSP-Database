@@ -24,7 +24,7 @@ def render_home():
 # ALL DATA WEBPAGE
 @app.route('/alldata')
 def render_alldata():
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable"
+    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid, image FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -91,7 +91,7 @@ def render_sortdecademade():
     else:
         new_order = "asc"
 
-    query = "SELECT Description, Condition, DecadeMade, PricePaidn FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Condition, DecadeMade, PricePaid FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -204,7 +204,7 @@ def render_search():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template("alldata.html", toys=toy_list, title=title)
+    return render_template("search.html", searches=toy_list, title=title)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)
