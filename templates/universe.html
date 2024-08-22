@@ -7,6 +7,7 @@
                 <tr>
                     <th><a href="/sort/universe?sort=universe&order={{ order }}">Universe</a></th>
                     <th>Description</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -14,6 +15,7 @@
                 <tr>
                     <td>{{  toy[0]  }}</td>
                     <td>{{  toy[1]  }}</td>
+                    <td><img src="/static/image/{{toy[2]}}"></td>
                 </tr>
                 {% endfor %}
 
