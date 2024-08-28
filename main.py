@@ -7,6 +7,7 @@ from sqlite3 import Error
 app = Flask(__name__)
 DATABASE = "toydatabase.db"
 
+
 # Creating a connection to the database
 def create_connection(db_file):
     try:
@@ -16,10 +17,12 @@ def create_connection(db_file):
         print(e)
     return None
 
+
 # HOME WEBPAGE
 @app.route('/')
 def render_home():
     return render_template("index.html")
+
 
 # ALL DATA WEBPAGE
 @app.route('/alldata')
@@ -37,6 +40,7 @@ def render_alldata():
 
 
 # LOCATION WEBPAGE
+"""
 @app.route('/location')
 def render_location():
     query = "SELECT Location, Description, image FROM toytable"
@@ -49,7 +53,43 @@ def render_location():
     con.close()
     print(toy_list)
     return render_template('location.html', toys=toy_list)
+"""
+""" only able to get location when location = attic"""
+@app.route('/location')
+def render_location_attic():
+    query = "SELECT Description, image FROM toytable WHERE Location = 'Attic';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
 
+    # Query the DATABASE
+    cur.execute(query)
+    toy_list = cur.fetchall()
+    con.close()
+    print(toy_list)
+    return render_template('location.html', toys=toy_list)
+
+
+
+
+
+"""does not work
+def get_location(place):
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute("SELECT Description, image FROM toytable WHERE location = ?", (place,))
+    location = cur.fetchall()
+    con.close()
+    return location
+
+@app.route('/location')
+def location():
+    place = request.args.get('location', 'Attic')
+    location = get_location(place)
+    print(location)
+    return render_template('location.html', location=location)
+"""
 
 # UNIVERSE WEBPAGE
 @app.route('/universe')
@@ -144,7 +184,7 @@ def render_sortuniverse():
     con.close()
 
     return render_template('universe.html', toys=toy_list, order=new_order)
-    
+
 
 # Sorting the Condition in the valuation webpage
 @app.route('/sort/condition')
@@ -204,6 +244,7 @@ def render_search():
     con.close()
 
     return render_template("search.html", searches=toy_list, title=title)
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)
