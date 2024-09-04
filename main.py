@@ -68,7 +68,19 @@ def render_location_attic():
     print(toy_list)
     return render_template('location.html', toys=toy_list)
 
+# TRIAL
+@app.route('/location')
+def render_location_garage():
+    query = "SELECT Description, image FROM toytable WHERE Location = 'Garage';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
 
+    # Query the DATABASE
+    cur.execute(query)
+    toy_list_garage = cur.fetchall()
+    con.close()
+    print(toy_list_garage)
+    return render_template('location.html', garage_room=toy_list_garage)
 
 
 

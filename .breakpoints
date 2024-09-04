@@ -1,5 +1,13 @@
 {
   "files": {
+    "templates/index.html": [
+      {
+        "id": "c11a6049-135d-4b65-a713-6f8a32787fc4",
+        "line": 18,
+        "version": 469,
+        "index": 481
+      }
+    ],
     "toydatabase.db": [
       {
         "id": "e001fd3e-b278-446c-ad77-a2e142a9d059",

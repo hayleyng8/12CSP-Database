@@ -14,7 +14,7 @@ html{
   width: 100%;
   /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(static/otherimage/toy-background.png); DOES NOT WORK*/
   /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../otherimage/toy-background.png); DARK GRADIENT*/
-  background-image: linear-gradient(rgba(4,9,30,0.5),rgba(4,9,30,0.5)),url(../otherimage/toy-background.png);
+  background-image: linear-gradient(rgba(4,9,30,0.5),rgba(4,9,30,0.5)),url("/static/otherimage/toy-background.png");
   background-position: center;
   background-size: cover;
   position: relative;
@@ -86,6 +86,10 @@ nav{
 .indexheader{
   /*background-color: #d1d1d1;*/
   background-color:#F8F8F8;
+}
+
+nav img{
+  width: 23%;
 }
 
 /*- Search bar -*/
