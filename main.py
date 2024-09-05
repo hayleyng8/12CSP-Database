@@ -154,7 +154,7 @@ def render_sortdecademade():
     return render_template("valuation.html", toys=toy_list, order=new_order)
 
 
-# Sorting the location on the location webpage
+# Sorting the location on the all data webpage
 @app.route('/sort/location')
 def render_sortlocation():
     sort = request.args.get('sort')
@@ -165,7 +165,7 @@ def render_sortlocation():
     else:
         new_order = 'asc'
 
-    query = "SELECT Location, Description, image FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -173,7 +173,7 @@ def render_sortlocation():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template('location.html', toys=toy_list, order=new_order)
+    return render_template('alldata.html', toys=toy_list, order=new_order)
 
 
 # Sorting the Universe in the universe webpage

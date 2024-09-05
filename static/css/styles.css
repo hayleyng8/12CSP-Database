@@ -1,6 +1,7 @@
 html{
   height: 100%;
   width: 100%;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
 *{
@@ -14,13 +15,15 @@ html{
   width: 100%;
   /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(static/otherimage/toy-background.png); DOES NOT WORK*/
   /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../otherimage/toy-background.png); DARK GRADIENT*/
-  background-image: linear-gradient(rgba(4,9,30,0.5),rgba(4,9,30,0.5)),url("/static/otherimage/toy-background.png");
+  background-image: linear-gradient(rgba(4,9,30,0.4),rgba(4,9,30,0.4)),url("/static/otherimage/toy-background.png");
   background-position: center;
   background-size: cover;
   position: relative;
 }
 
 /*-- navigation --*/
+
+/*
 nav{
   width: 90%;
   display: flex;
@@ -51,7 +54,8 @@ nav{
   font-size: 13px;
 }
 
-.nav-links ul li::after{
+
+.nav-links ul li::after{          */
   /*  from the center
   content: '';
   width: 0%;
@@ -61,10 +65,10 @@ nav{
   margin: auto;
   transition: 0.5s;
   */
-  content: '';
+/*content: '';
   width: 0;
   height: 2px;
-  background: #7c7cd5;
+  background: #1b3664;
   position: absolute;
   left: 0;
   bottom: -0.5px;
@@ -84,28 +88,66 @@ nav{
 }
 
 .indexheader{
-  /*background-color: #d1d1d1;*/
   background-color:#F8F8F8;
 }
-
+                          */
 nav img{
   width: 23%;
 }
 
+                                      
+/*other*/
+.navbar{
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  padding: 10px 0;
+  background: #6482b4;
+  border-bottom: 1px solid #9fb3d6;
+  transition: all .3s ease;
+}
+.navbar .max-width{
+  max-width: 1300px;
+  padding: 0 20px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu li{
+  list-style: none;
+  display: inline-block;  
+}
+
+.menu li a{
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-left: 25px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
 /*- Search bar -*/
+.nav-search{
+  display: flex;
+}
+
 .nav-search input[type="text"] {
   border: none;
   background-color: transparent;
   padding: 5px;
   font-size: 16px;
-  color: #fff;
+  color: black;
   border-bottom: 2px solid black;
   width: 200px;
 }
 
 .nav-search input[type="text"]:focus {
   outline: none;
-  border-bottom-color: #7c7cd5;
+  border-bottom-color: #1b3664;
 }
 
 .nav-search button {
@@ -114,7 +156,7 @@ nav img{
   cursor: pointer;
   padding: 10px;
   font-size: 16px;
-  color: #7c7cd5;
+  color: #1b3664;
 }
 
 
@@ -136,7 +178,7 @@ nav img{
   content: '';
   width: 0;
   height: 3px;
-  background: #400080;
+  background: #1b3664;
   position: absolute;
   left: 0;
   bottom: -8px;
@@ -155,6 +197,15 @@ nav img{
   display: block; 
 }
 
+
+
+/*---- Responsive CSS ----*/
+@media(max-width: 600px){
+  .header{
+    background-image: linear-gradient(rgba(4,9,30,0.4),rgba(4,9,30,0.4)),url("/static/otherimage/toy-background-phone.png"); /*Does nothing*/
+    
+  }
+}
 
 
 /* original

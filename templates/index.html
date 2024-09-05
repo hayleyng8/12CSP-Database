@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <title>Toys</title>
     <link type="text/css" rel="stylesheet" href="/static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body
     <section class="indexheader">
         <header>
-            <h1>Toys</h1>
         </header>
-        <nav>
-            <a href="index.html"><img src="static/otherimage/toys-logo.png"></a>
-            <div class="nav-links">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/alldata">All Data</a></li>
-                    <li><a href="/location">Location</a></li>
-                    <li><a href="/universe">Universe</a></li>
-                    <li><a href="/valuation">Valuation</a></li>
-                </ul>
-                <div class="nav-search">
-                    <form method="POST" action="/search">
-                        <input type="text" name ="search" id="search">
-                        <input type="submit" value="Search">
-                    </form>
+        <nav class="navbar">
+            <div class="max-width">
+                <div class="logo">
+                <a href="/"><img src="static/otherimage/toys-logo.png"></a>
+                </div>
+                <div class="nav-links">
+                    <ul class="menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/alldata">All Data</a></li>
+                        <li><a href="/location">Location</a></li>
+                        <li><a href="/universe">Universe</a></li>
+                        <li><a href="/valuation">Valuation</a></li>
+                    </ul>
+                    <div class="nav-search">
+                        <form method="POST" action="/search">
+                            <input type="text" name ="search" id="search">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -37,13 +43,8 @@
     <footer>
         <p>&copy; Hayley Ng 2024</p>
     </footer>
-
 </body>
-
 </html>
-
-
-
 
 
 
@@ -88,17 +89,4 @@
 </body>
 
 </html>
--->
-
-
-
-
-
-
-
-<!--{% extends "base.html" %}
-
-{% block main %}
-    <h2>Welcome!</h2>
-{% endblock %}
 -->
