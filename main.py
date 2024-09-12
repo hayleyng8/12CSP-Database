@@ -40,7 +40,6 @@ def render_alldata():
 
 
 # LOCATION WEBPAGE
-"""
 @app.route('/location')
 def render_location():
     query = "SELECT Location, Description, image FROM toytable"
@@ -53,55 +52,7 @@ def render_location():
     con.close()
     print(toy_list)
     return render_template('location.html', toys=toy_list)
-"""
-""" only able to get location when location = attic"""
-@app.route('/location')
-def render_location_attic():
-    query = "SELECT Description, image FROM toytable WHERE Location = 'Attic';"
-    con = create_connection(DATABASE)
-    cur = con.cursor()
 
-    # Query the DATABASE
-    cur.execute(query)
-    toy_list = cur.fetchall()
-    con.close()
-    print(toy_list)
-    return render_template('location.html', toys=toy_list)
-
-# TRIAL
-@app.route('/location')
-def render_location_garage():
-    query = "SELECT Description, image FROM toytable WHERE Location = 'Garage';"
-    con = create_connection(DATABASE)
-    cur = con.cursor()
-
-    # Query the DATABASE
-    cur.execute(query)
-    toy_list_garage = cur.fetchall()
-    con.close()
-    print(toy_list_garage)
-    return render_template('location.html', garage_room=toy_list_garage)
-
-
-
-"""does not work
-def get_location(place):
-    con = create_connection(DATABASE)
-    cur = con.cursor()
-
-    # Query the DATABASE
-    cur.execute("SELECT Description, image FROM toytable WHERE location = ?", (place,))
-    location = cur.fetchall()
-    con.close()
-    return location
-
-@app.route('/location')
-def location():
-    place = request.args.get('location', 'Attic')
-    location = get_location(place)
-    print(location)
-    return render_template('location.html', location=location)
-"""
 
 # UNIVERSE WEBPAGE
 @app.route('/universe')

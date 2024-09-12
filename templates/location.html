@@ -2,55 +2,11 @@
 
 {% block main %}
         <h2>Location</h2>
-        <div class="tab-titles">
-            <p class="tab-links active-link" onclick="opentab('attic')">Attic</p>
-            <p class="tab-links" onclick="opentab('garage')">Garage</p>
-            <p class="tab-links" onclick="opentab('toyroom')">Toy Room</p>
-        </div>
-        <div class="tab-contents active-tab" id="attic">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for toy in toys %}
-                    <tr>
-                        <td>{{  toy[0]  }}</td>
-                        <td><img src="/static/image/{{toy[1]}}"></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-contents" id="garage">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for garage in garage_room %}
-                    <tr>
-                        <td>{{  garage[0]  }}</td>
-                        <td><img src="/static/image/{{garage[1]}}"></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-contents" id="toyroom">
-            <p>Toy Room content</p>
-        </div>
 
-        <!--<table>
+        <table>
             <thead>
                 <tr>
-                    <!--<h2><a href="/sort/location?sort=location&order={{ order }}">Alphabetical</a></h2> close comment
+                    <!--<h2><a href="/sort/location?sort=location&order={{ order }}">Alphabetical</a></h2>-->
                     <th><a href="/sort/location?sort=location&order={{ order }}">Location</a></th>
                     <th>Description</th>
                     <th></th>
@@ -67,5 +23,5 @@
                 {% endfor %}
 
             </tbody>
-        </table>-->
+        </table>
 {% endblock %}
