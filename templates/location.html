@@ -3,25 +3,7 @@
 {% block main %}
         <h2>Location</h2>
 
-        <table>
-            <thead>
-                <tr>
-                    <!--<h2><a href="/sort/location?sort=location&order={{ order }}">Alphabetical</a></h2>-->
-                    <th><a href="/sort/location?sort=location&order={{ order }}">Location</a></th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for toy in toys %}
-                <tr>
-                    <td>{{  toy[0]  }}</td>
-                    <td>{{  toy[1]  }}</td>
-                    <td><img src="/static/image/{{toy[2]}}"></td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
+        <a href="/attic">Attic</a>
+        <a href="/garage">Garage</a>
+        <a href="/toyroom">Toy Room</a>
 {% endblock %}

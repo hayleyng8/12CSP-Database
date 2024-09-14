@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <a href="/attic">Attic</a>
+    <a href="/garage">Garage</a>
+    <a href="/toyroom">Toy Room</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for attic in attic_toys %}
+            <tr>
+                <td>{{  attic[0]  }}</td>
+                <td>{{  attic[1]  }}</td>
+                <td><img src="/static/image/{{attic[2]}}"></td>
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+{% endblock %}

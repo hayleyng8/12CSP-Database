@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <a href="/attic">Attic</a>
+    <a href="/garage">Garage</a>
+    <a href="/toyroom">Toy Room</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for garage in garage_toys %}
+            <tr>
+                <td>{{  garage[0]  }}</td>
+                <td>{{  garage[1]  }}</td>
+                <td><img src="/static/image/{{garage[2]}}"></td>
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+{% endblock %}

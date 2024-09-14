@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+#from flask import Flask, render_template, request, session
 import sqlite3
 from sqlite3 import Error
 
@@ -52,6 +53,48 @@ def render_location():
     con.close()
     print(toy_list)
     return render_template('location.html', toys=toy_list)
+
+# attic webpage
+@app.route('/attic')
+def render_attic():
+    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Attic';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    attic_list = cur.fetchall()
+    con.close()
+    print(attic_list)
+    return render_template("/location/attic.html", attic_toys=attic_list)
+
+# garage webpage
+@app.route('/garage')
+def render_garage():
+    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Garage';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    garage_list = cur.fetchall()
+    con.close()
+    print(garage_list)
+    return render_template("/location/garage.html", garage_toys=garage_list)
+
+# toy room webpage
+@app.route('/toyroom')
+def render_toyroom():
+    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Toy Room';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    toyroom_list = cur.fetchall()
+    con.close()
+    print(toyroom_list)
+    return render_template("/location/toyroom.html", toyroom_toys=toyroom_list)
 
 
 # UNIVERSE WEBPAGE
@@ -208,6 +251,35 @@ def render_search():
 
     return render_template("search.html", searches=toy_list, title=title)
 
+
+# LOCATION TRIAL
+"""
+@app.route('/location', methods=['GET', 'POST'])
+def render_location():
+    if request.method == 'POST':
+        #content = request.form['content']
+        content = "This is the updated content from the server."
+    else:
+        content = "This is the original content."
+        #content = None
+    return render_template('location.html', content=content)
+"""
+#LOCATION TRIAL SWAPPING BUTTON
+"""
+app.secret_key = 'your_secret_key'
+
+@app.route('/location', methods=['GET', 'POST'])
+def render_location():
+    if 'content' not in session:
+        session['content'] = "This is the original content."
+
+    if request.method == 'POST':
+        if session['content'] == "This is the original content.":
+            session['content'] = "This is the updated content from the server."
+        else:
+            session['content'] = "This is the original content."
+    return render_template('location.html', content=session['content'])
+"""
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)
