@@ -28,7 +28,7 @@ def render_home():
 # ALL DATA WEBPAGE
 @app.route('/alldata')
 def render_alldata():
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid, image FROM toytable"
+    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -97,10 +97,10 @@ def render_toyroom():
     return render_template("/location/toyroom.html", toyroom_toys=toyroom_list)
 
 
-# UNIVERSE WEBPAGE
-@app.route('/universe')
-def render_universe():
-    query = "SELECT Universe, Description, image FROM toytable"
+# Toy Line WEBPAGE
+@app.route('/toyline')
+def render_toyline():
+    query = "SELECT ToyLine, Description, image FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -109,7 +109,7 @@ def render_universe():
     toy_list = cur.fetchall()
     con.close()
     print(toy_list)
-    return render_template('universe.html', toys=toy_list)
+    return render_template('toyline.html', toys=toy_list)
 
 
 # VALUATION WEBPAGE
@@ -159,7 +159,7 @@ def render_sortlocation():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -170,9 +170,9 @@ def render_sortlocation():
     return render_template('alldata.html', toys=toy_list, order=new_order)
 
 
-# Sorting the Universe in the universe webpage
-@app.route('/sort/universe')
-def render_sortuniverse():
+# Sorting the Toyline in the Toy line webpage
+@app.route('/sort/toyline')
+def render_sorttoyline():
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -181,7 +181,8 @@ def render_sortuniverse():
     else:
         new_order = 'asc'
 
-    query = "SELECT Universe, Description, image FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT ToyLine, Description, image FROM toytable ORDER BY " + sort + " " + order
+
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -189,7 +190,7 @@ def render_sortuniverse():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template('universe.html', toys=toy_list, order=new_order)
+    return render_template('toyline.html', toys=toy_list, order=new_order)
 
 
 # Sorting the Condition in the valuation webpage
@@ -241,7 +242,7 @@ def render_sortpricepaid():
 def render_search():
     search = request.form["search"]
     title = "Search for " + search
-    query = "SELECT Description, Location, Universe, Condition, DecadeMade, Size, PricePaid FROM toytable WHERE Description LIKE ? OR Location LIKE ? OR Universe LIKE ? OR Condition LIKE ? OR DecadeMade LIKE ? or Size LIKE ? or PricePaid LIKE ?"
+    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid FROM toytable WHERE Description LIKE ? OR Location LIKE ? OR ToyLine LIKE ? OR Condition LIKE ? OR DecadeMade LIKE ? or Size LIKE ? or PricePaid LIKE ?"
     search = "%" + search + "%"
     con = create_connection(DATABASE)
     cur = con.cursor()
