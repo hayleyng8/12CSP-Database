@@ -6,7 +6,7 @@
             <!--Attic-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/attic-background1.jpg">
+                <img src="/static/otherimage/attic-background1.jpg" alt="Attic with boxes of toys">
                 <div class="layer-webpage">
                     <a href="/attic">Attic</a>
                 </div>
@@ -14,7 +14,7 @@
             <!--Garage-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/garage-background1.jpg">
+                <img src="/static/otherimage/garage-background1.jpg" alt="Garage with toys">
                 <div class="layer-webpage">
                     <a href="/garage">Garage</a>
                 </div>
@@ -22,7 +22,7 @@
             <!--Toy Room-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/toyroom-background1.jpg">
+                <img src="/static/otherimage/toyroom-background1.jpg" alt="Toy Room with toys on the shelf">
                 <div class="layer-webpage">
                     <a href="/toyroom">Toy Room</a>
                 </div>
@@ -30,6 +30,16 @@
         </div>
 
     <h3>Attic</h3>
+    <article>
+        {% for attic in attic_toys %}
+        <div class="toy-item">
+            <img src="/static/image/{{attic[2]}}" alt="{{  attic[1]  }}">
+            <p>{{  attic[1]  }}</p>
+        </div>
+        {% endfor %}
+    </article>
+    
+<!--
     <table>
         <thead>
             <tr>
@@ -44,10 +54,11 @@
             <tr>
                 <td>{{  attic[0]  }}</td>
                 <td>{{  attic[1]  }}</td>
-                <td><img src="/static/image/{{attic[2]}}"></td>
+                <td><img src="/static/image/{{attic[2]}}" alt="{{  attic[1]  }}"></td>
             </tr>
             {% endfor %}
     
         </tbody>
     </table>
+-->
 {% endblock %}

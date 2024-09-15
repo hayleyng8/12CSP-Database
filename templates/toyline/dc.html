@@ -6,7 +6,7 @@
             <!--DC-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/dc-background1.jpg">
+                <img src="/static/otherimage/dc-background1.jpg" alt="D.C superheroes in different colours">
                 <div class="layer-webpage">
                     <a href="/dc">D.C</a>
                 </div>
@@ -14,7 +14,7 @@
             <!--Fast & Furious-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/fastandfurious-background1.png">
+                <img src="/static/otherimage/fastandfurious-background1.png" alt="Fast and Furious characters">
                 <div class="layer-webpage">
                     <a href="/fandf">Fast & Furious</a>
                 </div>
@@ -22,7 +22,7 @@
             <!--Marvel-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/marvel-background1.jpg">
+                <img src="/static/otherimage/marvel-background1.jpg" alt="Marvel characters">
                 <div class="layer-webpage">
                     <a href="/marvel">Marvel</a>
                 </div>
@@ -30,7 +30,7 @@
             <!--Star Wars-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/starwars-background1.jpeg">
+                <img src="/static/otherimage/starwars-background1.jpeg" alt="Star Wars Stormtroopers">
                 <div class="layer-webpage">
                     <a href="/starwars">Star Wars</a>
                 </div>
@@ -38,7 +38,7 @@
             <!--Terminator-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/terminator-background1.jpg">
+                <img src="/static/otherimage/terminator-background1.jpg" alt="Person that is half Arnold Schwarzenegger and half Terminator">
                 <div class="layer-webpage">
                     <a href="/terminator">Terminator</a>
                 </div>
@@ -46,7 +46,7 @@
             <!--Top Gun-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/topgunmaverick-background1.jpg">
+                <img src="/static/otherimage/topgunmaverick-background1.jpg" alt="Top Gun Maverick">
                 <div class="layer-webpage">
                     <a href="/topgun">Top Gun</a>
                 </div>
@@ -54,7 +54,7 @@
             <!--Transformers-->
             <div class="toyline-webpage">
                 <div class="gradient"></div>
-                <img src="/static/otherimage/transformers-background1.jpg">
+                <img src="/static/otherimage/transformers-background1.jpg" alt="Transformers">
                 <div class="layer-webpage">
                     <a href="/transformers">Transformers</a>
                 </div>
@@ -62,6 +62,16 @@
         </div>
 
     <h3>D.C</h3>
+    <article>
+        {% for dc in dc_toys %}
+        <div class="toy-item">
+            <img src="/static/image/{{dc[2]}}" alt="{{  dc[1]  }}">
+            <p>{{  dc[1]  }}</p>
+        </div>
+        {% endfor %}
+    </article>
+
+<!--
         <table>
             <thead>
                 <tr>
@@ -81,4 +91,5 @@
 
             </tbody>
         </table>
+-->
 {% endblock %}

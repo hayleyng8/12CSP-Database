@@ -122,6 +122,22 @@ nav img{
 
 /*---- location ----*/
 
+/*Styling location items*/
+article {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.toy-item{
+    flex: 1 1 calc(16.66% - 20px);
+    padding: 10px;
+    text-align: center;
+}
+
 
 
 /*---- toyline ----*/
@@ -148,6 +164,8 @@ nav img{
   object-fit: cover;
 }
 
+/* Gradient tutorial
+https://www.youtube.com/watch?v=5CztcrXpfec*/
 .gradient{
   height: 100%;
   width: 100%;

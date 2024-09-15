@@ -279,7 +279,7 @@ def render_sorttoyline():
     else:
         new_order = 'asc'
 
-    query = "SELECT ToyLine, Description, image FROM toytable ORDER BY " + sort + " " + order
+    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
 
     con = create_connection(DATABASE)
     cur = con.cursor()
@@ -288,7 +288,7 @@ def render_sorttoyline():
     toy_list = cur.fetchall()
     con.close()
 
-    return render_template('toyline.html', toys=toy_list, order=new_order)
+    return render_template('alldata.html', toys=toy_list, order=new_order)
 
 
 # Sorting the Condition in the valuation webpage
