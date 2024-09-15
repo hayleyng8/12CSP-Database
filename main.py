@@ -53,6 +53,7 @@ def render_location():
     print(toy_list)
     return render_template('location.html', toys=toy_list)
 
+
 # attic webpage
 @app.route('/attic')
 def render_attic():
@@ -67,6 +68,7 @@ def render_attic():
     print(attic_list)
     return render_template("/location/attic.html", attic_toys=attic_list)
 
+
 # garage webpage
 @app.route('/garage')
 def render_garage():
@@ -80,6 +82,7 @@ def render_garage():
     con.close()
     print(garage_list)
     return render_template("/location/garage.html", garage_toys=garage_list)
+
 
 # toy room webpage
 @app.route('/toyroom')
@@ -115,6 +118,7 @@ def render_dc():
     con.close()
     print(dc_list)
     return render_template("/toyline/dc.html", dc_toys=dc_list)
+
 
 # fast & furious webpage
 @app.route('/fandf')

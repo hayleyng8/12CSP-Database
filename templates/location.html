@@ -1,9 +1,32 @@
 {% extends "base.html" %}
 
 {% block main %}
-        <h2>Location</h2>
+    <a href="/location"><h2>Location</h2></a>
 
-        <a href="/attic">Attic</a>
-        <a href="/garage">Garage</a>
-        <a href="/toyroom">Toy Room</a>
+    <div class="row">
+        <!--Attic-->
+        <div class="toyline">
+            <div class="gradient"></div>
+            <img src="/static/otherimage/attic-background1.jpg">
+            <div class="layer">
+                 <a href="/attic">Attic</a>
+            </div>
+        </div>
+        <!--Garage-->
+        <div class="toyline">
+            <div class="gradient"></div>
+            <img src="/static/otherimage/garage-background1.jpg">
+            <div class="layer">
+                <a href="/garage">Garage</a>
+            </div>
+        </div>
+        <!--Toy Room-->
+        <div class="toyline">
+            <div class="gradient"></div>
+            <img src="/static/otherimage/toyroom-background1.jpg">
+            <div class="layer">
+                <a href="/toyroom">Toy Room</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
