@@ -2,66 +2,66 @@
 
 {% block main %}
     <a href="/toyline"><h2>Toy Line</h2></a>
-
         <div class="row">
             <!--DC-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/dc-background1.jpg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/dc">D.C</a>
                 </div>
             </div>
             <!--Fast & Furious-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/fastandfurious-background1.png">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/fandf">Fast & Furious</a>
                 </div>
             </div>
             <!--Marvel-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/marvel-background1.jpg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/marvel">Marvel</a>
                 </div>
             </div>
             <!--Star Wars-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/starwars-background1.jpeg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/starwars">Star Wars</a>
                 </div>
             </div>
             <!--Terminator-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/terminator-background1.jpg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/terminator">Terminator</a>
                 </div>
             </div>
             <!--Top Gun-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/topgunmaverick-background1.jpg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/topgun">Top Gun</a>
                 </div>
             </div>
             <!--Transformers-->
-            <div class="toyline">
+            <div class="toyline-webpage">
                 <div class="gradient"></div>
                 <img src="/static/otherimage/transformers-background1.jpg">
-                <div class="layer">
+                <div class="layer-webpage">
                     <a href="/transformers">Transformers</a>
                 </div>
             </div>
         </div>
-<!--
+
+    <h3>Top Gun</h3>
         <table>
             <thead>
                 <tr>
@@ -71,15 +71,14 @@
                 </tr>
             </thead>
             <tbody>
-                {% for toy in toys %}
+                {% for topgun in topgun_toys %}
                 <tr>
-                    <td>{{  toy[0]  }}</td>
-                    <td>{{  toy[1]  }}</td>
-                    <td><img src="/static/image/{{toy[2]}}"></td>
+                    <td>{{  topgun[0]  }}</td>
+                    <td>{{  topgun[1]  }}</td>
+                    <td><img src="/static/image/{{topgun[2]}}"></td>
                 </tr>
                 {% endfor %}
 
             </tbody>
         </table>
--->
 {% endblock %}

@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-#from flask import Flask, render_template, request, session
 import sqlite3
 from sqlite3 import Error
 
@@ -100,16 +99,111 @@ def render_toyroom():
 # Toy Line WEBPAGE
 @app.route('/toyline')
 def render_toyline():
-    query = "SELECT ToyLine, Description, image FROM toytable"
+    return render_template('toyline.html')
+
+
+# d.c webpage
+@app.route('/dc')
+def render_dc():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'D.C';"
     con = create_connection(DATABASE)
     cur = con.cursor()
 
     # Query the DATABASE
     cur.execute(query)
-    toy_list = cur.fetchall()
+    dc_list = cur.fetchall()
     con.close()
-    print(toy_list)
-    return render_template('toyline.html', toys=toy_list)
+    print(dc_list)
+    return render_template("/toyline/dc.html", dc_toys=dc_list)
+
+# fast & furious webpage
+@app.route('/fandf')
+def render_fandf():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Fast & Furious';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    fandf_list = cur.fetchall()
+    con.close()
+    print(fandf_list)
+    return render_template("/toyline/fandf.html", fandf_toys=fandf_list)
+
+
+# marvel webpage
+@app.route('/marvel')
+def render_marvel():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Marvel';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    marvel_list = cur.fetchall()
+    con.close()
+    print(marvel_list)
+    return render_template("/toyline/marvel.html", marvel_toys=marvel_list)
+
+
+# starwars webpage
+@app.route('/starwars')
+def render_starwars():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Star Wars';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    starwars_list = cur.fetchall()
+    con.close()
+    print(starwars_list)
+    return render_template("/toyline/starwars.html", starwars_toys=starwars_list)
+
+
+# terminator webpage
+@app.route('/terminator')
+def render_terminator():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Terminator';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    terminator_list = cur.fetchall()
+    con.close()
+    print(terminator_list)
+    return render_template("/toyline/terminator.html", terminator_toys=terminator_list)
+
+
+# top gun maverick webpage
+@app.route('/topgun')
+def render_topgun():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Top Gun';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    topgun_list = cur.fetchall()
+    con.close()
+    print(topgun_list)
+    return render_template("/toyline/topgun.html", topgun_toys=topgun_list)
+
+
+# transformers webpage
+@app.route('/transformers')
+def render_transformers():
+    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Transformers';"
+    con = create_connection(DATABASE)
+    cur = con.cursor()
+
+    # Query the DATABASE
+    cur.execute(query)
+    transformers_list = cur.fetchall()
+    con.close()
+    print(transformers_list)
+    return render_template("/toyline/transformers.html", transformers_toys=transformers_list)
 
 
 # VALUATION WEBPAGE
@@ -252,35 +346,6 @@ def render_search():
 
     return render_template("search.html", searches=toy_list, title=title)
 
-
-# LOCATION TRIAL
-"""
-@app.route('/location', methods=['GET', 'POST'])
-def render_location():
-    if request.method == 'POST':
-        #content = request.form['content']
-        content = "This is the updated content from the server."
-    else:
-        content = "This is the original content."
-        #content = None
-    return render_template('location.html', content=content)
-"""
-#LOCATION TRIAL SWAPPING BUTTON
-"""
-app.secret_key = 'your_secret_key'
-
-@app.route('/location', methods=['GET', 'POST'])
-def render_location():
-    if 'content' not in session:
-        session['content'] = "This is the original content."
-
-    if request.method == 'POST':
-        if session['content'] == "This is the original content.":
-            session['content'] = "This is the updated content from the server."
-        else:
-            session['content'] = "This is the original content."
-    return render_template('location.html', content=session['content'])
-"""
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=81)
