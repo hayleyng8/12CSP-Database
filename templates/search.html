@@ -2,7 +2,6 @@
 
 {% block main %}
 
-<!--WHEN ON A PAGE LIKE VALUATION THE SEARCH WILL AUTOMATICALLY DEFAULT TO SHOW ALL DATA INSTEAD OF ONLY DATA THAT IS ON THE PAGE-->
         <table>
         <thead>
             <tr>
@@ -26,7 +25,7 @@
                 <td>{{  toy[4]  }}</td>
                 <td>{{  toy[5]  }}</td>
                 <td>{{  toy[6]  }}</td>
-                <td><img src="/static/image/{{toy[7]}}"></td>
+                <td><img src="/static/image/{{  toy[7]  }}" alt="{{  toy[0]  }}"></td>
             </tr>
             {% endfor %}
         </tbody>

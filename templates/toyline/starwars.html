@@ -5,30 +5,9 @@
     <article>
         {% for starwars in starwars_toys %}
         <div class="toy-item">
-            <img src="/static/image/{{starwars[2]}}" alt="{{  starwars[1]  }}">
+            <img src="/static/image/{{  starwars[2]  }}" alt="{{  starwars[1]  }}">
             <p>{{  starwars[1]  }}</p>
         </div>
         {% endfor %}
     </article>
-<!--
-        <table>
-            <thead>
-                <tr>
-                    <th>Toy Line</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for starwars in starwars_toys %}
-                <tr>
-                    <td>{{  starwars[0]  }}</td>
-                    <td>{{  starwars[1]  }}</td>
-                    <td><img src="/static/image/{{starwars[2]}}"></td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
--->
 {% endblock %}

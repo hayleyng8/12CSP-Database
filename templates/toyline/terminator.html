@@ -5,30 +5,9 @@
     <article>
         {% for terminator in terminator_toys %}
         <div class="toy-item">
-            <img src="/static/image/{{terminator[2]}}" alt="{{  terminator[1]  }}">
+            <img src="/static/image/{{  terminator[2]  }}" alt="{{  terminator[1]  }}">
             <p>{{  terminator[1]  }}</p>
         </div>
         {% endfor %}
     </article>
-<!--
-        <table>
-            <thead>
-                <tr>
-                    <th>Toy Line</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for terminator in terminator_toys %}
-                <tr>
-                    <td>{{  terminator[0]  }}</td>
-                    <td>{{  terminator[1]  }}</td>
-                    <td><img src="/static/image/{{terminator[2]}}"></td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
--->
 {% endblock %}

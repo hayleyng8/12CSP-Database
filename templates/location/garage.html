@@ -5,32 +5,10 @@
     <article>
         {% for garage in garage_toys %}
         <div class="toy-item">
-            <img src="/static/image/{{garage[2]}}" alt="{{  garage[1]  }}">
+            <img src="/static/image/{{  garage[2]  }}" alt="{{  garage[1]  }}">
             <p>{{  garage[1]  }}</p>
         </div>
         {% endfor %}
     </article>
 
-<!--
-    <table>
-        <thead>
-            <tr>
-                <th>Location</th>
-                <th>Description</th>
-                <th></th>
-            </tr>
-        </thead>
-    
-        <tbody>
-            {% for garage in garage_toys %}
-            <tr>
-                <td>{{  garage[0]  }}</td>
-                <td>{{  garage[1]  }}</td>
-                <td><img src="/static/image/{{garage[2]}}" alt="{{  garage[1]  }}"></td>
-            </tr>
-            {% endfor %}
-    
-        </tbody>
-    </table>
--->
 {% endblock %}

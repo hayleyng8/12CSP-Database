@@ -5,31 +5,9 @@
     <article>
         {% for marvel in marvel_toys %}
         <div class="toy-item">
-            <img src="/static/image/{{marvel[2]}}" alt="{{  marvel[1]  }}">
+            <img src="/static/image/{{  marvel[2]  }}" alt="{{  marvel[1]  }}">
             <p>{{  marvel[1]  }}</p>
         </div>
         {% endfor %}
     </article>
-
-<!--
-        <table>
-            <thead>
-                <tr>
-                    <th>Toy Line</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for marvel in marvel_toys %}
-                <tr>
-                    <td>{{  marvel[0]  }}</td>
-                    <td>{{  marvel[1]  }}</td>
-                    <td><img src="/static/image/{{marvel[2]}}"></td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
--->
 {% endblock %}

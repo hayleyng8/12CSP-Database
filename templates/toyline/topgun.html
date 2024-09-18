@@ -5,30 +5,9 @@
     <article>
         {% for topgun in topgun_toys %}
         <div class="toy-item">
-            <img src="/static/image/{{topgun[2]}}" alt="{{  topgun[1]  }}">
+            <img src="/static/image/{{  topgun[2]  }}" alt="{{  topgun[1]  }}">
             <p>{{  topgun[1]  }}</p>
         </div>
         {% endfor %}
     </article>
-<!--
-        <table>
-            <thead>
-                <tr>
-                    <th>Toy Line</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for topgun in topgun_toys %}
-                <tr>
-                    <td>{{  topgun[0]  }}</td>
-                    <td>{{  topgun[1]  }}</td>
-                    <td><img src="/static/image/{{topgun[2]}}"></td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
--->
 {% endblock %}
