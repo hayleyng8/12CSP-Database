@@ -2,13 +2,22 @@
 
 {% block main %}
         <h2>All Data</h2>
+        <div class="dropdown">
+            <button class="dropdown-button">Sort by &#x21E9;</button>
+            <div class="dropdown-content">
+                <a href="/sort/1?sort=1&order={{ order }}">Description</a>
+                <a href="/sort/location?sort=location&order={{ order }}">Location</a>
+                <a href="/sort/toyline?sort=toyline&order={{ order }}">Toy Line</a>
+            </div>
+        </div>
+
+        <!--<div class="alldata-table">-->
         <table>
         <thead>
             <tr>
-                
                 <th>Description</th>
-                <th><a href="/sort/location?sort=location&order={{ order }}">Location</a></th>
-                <th><a href="/sort/toyline?sort=toyline&order={{ order }}">Toy Line</a></th>
+                <th>Location</th>
+                <th>Toy Line</th>
                 <th>Condition</th>
                 <th>Decade Made</th>
                 <th>Size</th>
@@ -18,7 +27,6 @@
         </thead>
         <tbody>
             {% for toy in toys %}
-            <div class="alldata">
             <tr>
                 <td>{{  toy[0]  }}</td>
                 <td>{{  toy[1]  }}</td>
@@ -29,9 +37,9 @@
                 <td>{{  toy[6]  }}</td>
                 <td><img src="/static/image/{{toy[7]}}"></td>
             </tr>
-            </div>
             {% endfor %}
 
         </tbody>
         </table>
+        <!--</div>-->
 {% endblock %}

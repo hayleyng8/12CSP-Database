@@ -1,34 +1,6 @@
-{% extends "base.html" %}
+{% extends "base-location.html" %}
 
 {% block main %}
-    <a href="/location"><h2>Location</h2></a>
-        <div class="row">
-            <!--Attic-->
-            <div class="toyline-webpage">
-                <div class="gradient"></div>
-                <img src="/static/otherimage/attic-background1.jpg" alt="Attic with boxes of toys">
-                <div class="layer-webpage">
-                    <a href="/attic">Attic</a>
-                </div>
-            </div>
-            <!--Garage-->
-            <div class="toyline-webpage">
-                <div class="gradient"></div>
-                <img src="/static/otherimage/garage-background1.jpg" alt="Garage with toys">
-                <div class="layer-webpage">
-                    <a href="/garage">Garage</a>
-                </div>
-            </div>
-            <!--Toy Room-->
-            <div class="toyline-webpage">
-                <div class="gradient"></div>
-                <img src="/static/otherimage/toyroom-background1.jpg" alt="Toy Room with toys on the shelf">
-                <div class="layer-webpage">
-                    <a href="/toyroom">Toy Room</a>
-                </div>
-            </div>
-        </div>
-    
     <h3>Garage</h3>
     <article>
         {% for garage in garage_toys %}

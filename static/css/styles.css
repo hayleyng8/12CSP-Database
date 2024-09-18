@@ -9,12 +9,33 @@ html{
   padding: 0;
 }
 
-/*---- base ----*/
+h2{
+  padding-left: 0.5%;
+  text-decoration: none;
+}
+
+h3{
+  padding-top: 1%;
+  font-size: 22px;
+  padding-left: 0.5%;
+}
+
+main{
+  padding-bottom: 5%
+}
+
+footer {
+  padding-top: 0.5%;
+  padding-left: 0.5%;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/*---- base and index ----*/
 .header{
   min-height: 100vh;
   width: 100%;
-  /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(static/otherimage/toy-background.png); DOES NOT WORK*/
-  /*background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(../otherimage/toy-background.png); DARK GRADIENT*/
   background-image: linear-gradient(rgba(4,9,30,0.4),rgba(4,9,30,0.4)),url("/static/otherimage/toy-background.png");
   background-position: center;
   background-size: cover;
@@ -23,20 +44,15 @@ html{
 
 /*-- navigation --*/
 nav{
-  width: 90%;
   display: flex;
   padding: 2% 6%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .nav-links{
   flex: 1;
   text-align: right;
-  display: flex;
-  justify-content: flex-end;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .nav-links ul li{
@@ -44,7 +60,6 @@ nav{
   display: inline-block;
   padding: 8px 12px;
   position: relative;
-  /*text-transform: uppercase;*/
 }
 
 .nav-links ul li a{
@@ -53,17 +68,7 @@ nav{
   font-size: 13px;
 }
 
-
 .nav-links ul li::after{
-  /*  from the center
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: #7c7cd5;
-  display: block;
-  margin: auto;
-  transition: 0.5s;
-  */
 content: '';
   width: 0;
   height: 2px;
@@ -78,50 +83,39 @@ content: '';
   width: 100%;
 }
 
-.nav-search{
-  padding-left: 16px;
-}
-
-#nav-colour ul li a{
-  color: black;
-}
 
 .indexheader{
-  background-color:#F8F8F8;
+  *background-color:#F8F8F8;
+}                 
+
+/*Responsive nav stuff*/
+.xmark{
+  display: none;
 }
 
-nav img{
-  width: 23%;
-}                                
+.bars{
+  display: none;
+}
 
-/*- Search bar -*/
+  /*- Search bar -*/
+.nav-search{
+  padding-left: 2%;
+}
+
+
 .nav-search input[type="text"] {
-  border: none;
-  background-color: transparent;
   padding: 5px;
-  font-size: 16px;
+  font-size: 12px;
   color: black;
-  border-bottom: 2px solid black;
-  width: 200px;
+  width: 180px;
 }
 
-.nav-search input[type="text"]:focus {
-  outline: none;
-  border-bottom-color: #1b3664;
+.nav-search input[type="submit"] {
+  border-style: solid 1px;
+  padding: 2px;
 }
-
-.nav-search button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 16px;
-  color: #1b3664;
-}
-
 
 /*---- location ----*/
-
 /*Styling location items*/
 article {
     display: flex;
@@ -138,9 +132,7 @@ article {
     text-align: center;
 }
 
-
-
-/*---- toyline ----*/
+/*---- Toyline ----*/
 .row{
     margin-left: 0.5%;
     margin-top: 2%;
@@ -154,7 +146,6 @@ article {
   position: relative;
   overflow: hidden;
   margin-right: 5px;
-  /*padding-top: 0.4%*/
 }
 
 .toyline img{
@@ -226,53 +217,7 @@ https://www.youtube.com/watch?v=5CztcrXpfec*/
   text-decoration: none;
 }
 
-/*---- Responsive CSS ----*/
-@media(max-width: 600px){
-  .header{
-    background-image: linear-gradient(rgba(4,9,30,0.4),rgba(4,9,30,0.4)),url("/static/otherimage/toy-background-phone.png"); /*Does nothing*/
-    
-  }
-}
-
-
-/* original
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 0;
-}
-.data-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-  padding: 20px;
-}
-
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  margin: 0;
-}
-
-main {
-  padding: 20px;
-}
-
-.toy-collection {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 20px;
-}
-
+/*---- All Data ----*/
 .toy-item {
   background-color: #fff;
   border-radius: 5px;
@@ -296,31 +241,119 @@ main {
   margin-bottom: 10px;
 }
 
-.button {
-  background-color: #333;
-  color: #fff;
+td {
+  border-bottom: 1px solid #ddd; /* Lighter border color */
+  padding: 20px; /* Reduced padding */
+  font-size: 16px; /* Increased font size */
+  text-align: left; /* Left-aligned text */
+}
+
+th {
+  padding: 20px; /* Reduced padding */
+  font-weight: 600; /* Less bold font weight */
+  text-align: left; /* Left-aligned text */
+  background-color: #f0f0f0; /* Light grey background */
+  border-bottom: 2px solid #ddd; /* Darker border */
+}
+
+/*DROP DOWN in ALL DATA*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-left: 0.3%;
+}
+
+.dropdown-button {
+  background-color: #1b3664;
+  color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
   cursor: pointer;
+  border-radius: 4px;
 }
 
-.button:hover {
-  background-color: #555;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #F8F8F8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
 }
 
-img{
-  size: 50%;
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
-td {
-  border-bottom: 1px solid black;
-  padding: 30px;
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
 }
 
-th{
-  padding: 30px;
-  background-color: #f0f0f0;
-  font-weight: bold;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
-*/
+
+.dropdown:hover .dropdown-button {
+  background-color: #1b3664;
+}
+
+
+/*--RESPONSIVE CSS--*/
+@media(max-width: 850px){
+  .nav-links ul li{
+    display: block;
+  }
+  .nav-links{
+    position: absolute;
+    background: #d3d3d3;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px;
+    text-align: left;
+    z-index: 2;
+    transition: 1s;
+  }
+  .xmark{
+    display: block;
+    color: #000000;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .bars{
+    display: block;
+    color: #000000;
+    margin: 10px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  .nav-links ul{
+    padding: 30px;
+  }
+  .nav-search input[type="text"] {
+    padding: 5px;
+    font-size: 12px;
+    width: 160px;
+  }
+  .layer-webpage a{
+    font-size: 6px;
+  }
+  .layer a{
+    font-size: 12px;
+  }
+
+  table {
+    width: 50%;
+  }
+}

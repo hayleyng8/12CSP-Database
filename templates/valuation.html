@@ -2,13 +2,24 @@
 
 {% block main %}
         <h2>Valuation</h2>
+        <div class="dropdown">
+            <button class="dropdown-button">Sort by &#x21E9;</button>
+            <div class="dropdown-content">
+                <a href="/sort/description?sort=description&order={{ order }}">Description</a>
+                <a href="/sort/condition?sort=condition&order={{ order }}">Condition</a>
+                <a href="/sort/decademade?sort=decademade&order={{ order }}">Decade Made</a>
+                <a href="/sort/pricepaid?sort=pricepaid&order={{ order }}">Price Paid</a>
+                
+            </div>
+        </div>
+    
         <table>
             <thead>
                 <tr>
                     <th>Description</th>
-                    <th><a href="/sort/condition?sort=condition&order={{ order }}">Condition</a></th>
-                    <th><a href="/sort/decademade?sort=decademade&order={{ order }}">Decade Made</a></th>
-                    <th><a href="/sort/pricepaid?sort=pricepaid&order={{ order }}">Price Paid</a></th>
+                    <th>Condition</th>
+                    <th>Decade Made</th>
+                    <th>Price Paid</th>
                     <th></th>
                 </tr>
             </thead>

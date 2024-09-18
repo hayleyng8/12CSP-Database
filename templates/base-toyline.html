@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Toys</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/1fb51cad3a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+    </header>
+    <nav>
+        <img src="/static/otherimage/toys-logo.png" width="10%">
+        <div class="nav-links" id="navLinks">
+            <div class="xmark"><i class="fa-solid fa-xmark" onclick="hideMenu()"></i></div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/alldata">All Data</a></li>
+                <li><a href="/location">Location</a></li>
+                <li><a href="/toyline">Toy Line</a></li>
+                <li><a href="/valuation">Valuation</a></li>
+            </ul>
+        </div>
+        <div class="nav-search">
+            <form method="POST" action="/search">
+                <input type="text" placeholder="Search..." name ="search" id="search">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="bars"><i class="fa-solid fa-bars" onclick="showMenu()"></i></div>
+    </nav>
+    <main>
+        <h2>{{ title }}</h2>
+        
+        <a href="/toyline"><h2>Toy Line</h2></a>
+        <div class="row">
+            <!--DC-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/dc-background1.jpg" alt="D.C superheroes in different colours">
+                <div class="layer-webpage">
+                    <a href="/dc">D.C</a>
+                </div>
+            </div>
+            <!--Fast & Furious-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/fastandfurious-background1.png" alt="Fast and Furious characters">
+                <div class="layer-webpage">
+                    <a href="/fandf">Fast & Furious</a>
+                </div>
+            </div>
+            <!--Marvel-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/marvel-background1.jpg" alt="Marvel characters">
+                <div class="layer-webpage">
+                    <a href="/marvel">Marvel</a>
+                </div>
+            </div>
+            <!--Star Wars-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/starwars-background1.jpeg" alt="Star Wars Stormtroopers">
+                <div class="layer-webpage">
+                    <a href="/starwars">Star Wars</a>
+                </div>
+            </div>
+            <!--Terminator-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/terminator-background1.jpg" alt="Person that is half Arnold Schwarzenegger and half Terminator">
+                <div class="layer-webpage">
+                    <a href="/terminator">Terminator</a>
+                </div>
+            </div>
+            <!--Top Gun-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/topgunmaverick-background1.jpg" alt="Top Gun Maverick">
+                <div class="layer-webpage">
+                    <a href="/topgun">Top Gun</a>
+                </div>
+            </div>
+            <!--Transformers-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/transformers-background1.jpg" alt="Transformers">
+                <div class="layer-webpage">
+                    <a href="/transformers">Transformers</a>
+                </div>
+            </div>
+        </div>
+    {% block main %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>&copy; Hayley Ng 2024</p>
+    </footer>
+
+    <!--JavaScript for Toggle Menu-->
+    <script>
+
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu(){
+            navLinks.style.right = "0";
+        }
+        function hideMenu(){
+            navLinks.style.right = "-200px";
+        }
+
+    </script>
+    
+    
+</body>
+
+</html>

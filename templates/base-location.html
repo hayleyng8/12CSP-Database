@@ -8,9 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1fb51cad3a.js" crossorigin="anonymous"></script>
-
+    
 </head>
 <body>
+    <header>
+    </header>
     <nav>
         <img src="/static/otherimage/toys-logo.png" width="10%">
         <div class="nav-links" id="navLinks">
@@ -33,13 +35,41 @@
     </nav>
     <main>
         <h2>{{ title }}</h2>
+        <a href="/location"><h2>Location</h2></a>
+        <div class="row">
+            <!--Attic-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/attic-background1.jpg" alt="Attic with boxes of toys">
+                <div class="layer-webpage">
+                    <a href="/attic">Attic</a>
+                </div>
+            </div>
+            <!--Garage-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/garage-background1.jpg" alt="Garage with toys">
+                <div class="layer-webpage">
+                    <a href="/garage">Garage</a>
+                </div>
+            </div>
+            <!--Toy Room-->
+            <div class="toyline-webpage">
+                <div class="gradient"></div>
+                <img src="/static/otherimage/toyroom-background1.jpg" alt="Toy Room with toys on the shelf">
+                <div class="layer-webpage">
+                    <a href="/toyroom">Toy Room</a>
+                </div>
+            </div>
+        </div>
+
     {% block main %}{% endblock %}
     </main>
     
     <footer>
         <p>&copy; Hayley Ng 2024</p>
     </footer>
-
+    
     <!--JavaScript for Toggle Menu-->
     <script>
 
@@ -49,9 +79,9 @@
             navLinks.style.right = "0";
         }
         function hideMenu(){
-            navLinks.style.right = "-700px";
+            navLinks.style.right = "-200px";
         }
 
-    </script>
+    </script>    
 </body>
 </html>
