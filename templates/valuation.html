@@ -3,13 +3,12 @@
 {% block main %}
         <h2>Valuation</h2>
         <div class="dropdown">
-            <button class="dropdown-button">Sort by &#x21E9;</button>
+            <button class="dropdown-button">Sort by ↓</button>
             <div class="dropdown-content">
                 <a href="/sort/description?sort=description&order={{ order }}">Description</a>
                 <a href="/sort/condition?sort=condition&order={{ order }}">Condition</a>
                 <a href="/sort/decademade?sort=decademade&order={{ order }}">Decade Made</a>
                 <a href="/sort/pricepaid?sort=pricepaid&order={{ order }}">Price Paid</a>
-                
             </div>
         </div>
     
@@ -33,7 +32,6 @@
                     <td><img src="/static/image/{{  toy[4]  }}" alt="{{  toy[0]  }}"></td>
                 </tr>
                 {% endfor %}
-
             </tbody>
         </table>
 {% endblock %}

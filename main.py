@@ -1,3 +1,5 @@
+"""File connects the database to the website."""
+
 from flask import Flask, render_template, request
 import sqlite3
 from sqlite3 import Error
@@ -6,8 +8,9 @@ app = Flask(__name__)
 DATABASE = "toydatabase.db"
 
 
-# Creating a connection to the database
+# Connection to the database
 def create_connection(db_file):
+    """Will create a connection to the database."""
     try:
         connection = sqlite3.connect(db_file)
         return connection
@@ -16,16 +19,23 @@ def create_connection(db_file):
     return None
 
 
-"""HOME OR INDEX WEBPAGE"""
+# HOME OR INDEX WEBPAGE
 @app.route('/')
 def render_home():
+    """Will render the homepage."""
     return render_template("index.html")
 
 
-"""ALL DATA WEBPAGE"""
+# ALL DATA WEBPAGE
 @app.route('/alldata')
 def render_alldata():
-    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable"
+    """Will render the all data webpage."""
+    query = (
+        "SELECT Description, Location, ToyLine, Condition, "
+        "DecadeMade, Size, PricePaid, image "
+        "FROM toytable"
+    )
+
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -37,9 +47,10 @@ def render_alldata():
     return render_template('alldata.html', toys=toy_list)
 
 
-"""LOCATION WEBPAGE"""
+# LOCATION WEBPAGE
 @app.route('/location')
 def render_location():
+    """Will render the location webpage."""
     query = "SELECT Location, Description, image FROM toytable"
     con = create_connection(DATABASE)
     cur = con.cursor()
@@ -55,7 +66,12 @@ def render_location():
 # attic webpage
 @app.route('/attic')
 def render_attic():
-    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Attic';"
+    """Will render the attic webpage."""
+    query = (
+        "SELECT Location, Description, image "
+        "FROM toytable "
+        "WHERE Location = 'Attic';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -70,7 +86,12 @@ def render_attic():
 # garage webpage
 @app.route('/garage')
 def render_garage():
-    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Garage';"
+    """Will render the garage webpage."""
+    query = (
+        "SELECT Location, Description, image "
+        "FROM toytable "
+        "WHERE Location = 'Garage';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -85,7 +106,12 @@ def render_garage():
 # toy room webpage
 @app.route('/toyroom')
 def render_toyroom():
-    query = "SELECT Location, Description, image FROM toytable WHERE Location = 'Toy Room';"
+    """Will render the toy room webpage."""
+    query = (
+        "SELECT Location, Description, image "
+        "FROM toytable "
+        "WHERE Location = 'Toy Room';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -97,16 +123,22 @@ def render_toyroom():
     return render_template("/location/toyroom.html", toyroom_toys=toyroom_list)
 
 
-"""TOY LINE WEBPAGE"""
+# TOY LINE WEBPAGE
 @app.route('/toyline')
 def render_toyline():
+    """Will render the toy line webpage."""
     return render_template('toyline.html')
 
 
 # d.c webpage
 @app.route('/dc')
 def render_dc():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'D.C';"
+    """Will render the d.c webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'D.C';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -121,7 +153,12 @@ def render_dc():
 # fast & furious webpage
 @app.route('/fandf')
 def render_fandf():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Fast & Furious';"
+    """Will render the fast & furious webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Fast & Furious';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -136,7 +173,12 @@ def render_fandf():
 # marvel webpage
 @app.route('/marvel')
 def render_marvel():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Marvel';"
+    """Will render the marvel webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Marvel';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -151,7 +193,12 @@ def render_marvel():
 # starwars webpage
 @app.route('/starwars')
 def render_starwars():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Star Wars';"
+    """Will render the starwars webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Star Wars';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -160,13 +207,19 @@ def render_starwars():
     starwars_list = cur.fetchall()
     con.close()
     print(starwars_list)
-    return render_template("/toyline/starwars.html", starwars_toys=starwars_list)
+    return render_template("/toyline/starwars.html",
+                           starwars_toys=starwars_list)
 
 
 # terminator webpage
 @app.route('/terminator')
 def render_terminator():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Terminator';"
+    """Will render the terminator webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Terminator';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -175,13 +228,19 @@ def render_terminator():
     terminator_list = cur.fetchall()
     con.close()
     print(terminator_list)
-    return render_template("/toyline/terminator.html", terminator_toys=terminator_list)
+    return render_template("/toyline/terminator.html",
+                           terminator_toys=terminator_list)
 
 
 # top gun maverick webpage
 @app.route('/topgun')
 def render_topgun():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Top Gun';"
+    """Will render the topgun webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Top Gun';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -196,7 +255,12 @@ def render_topgun():
 # transformers webpage
 @app.route('/transformers')
 def render_transformers():
-    query = "SELECT ToyLine, Description, image FROM toytable WHERE ToyLine = 'Transformers';"
+    """Will render the transformers webpage."""
+    query = (
+        "SELECT ToyLine, Description, image "
+        "FROM toytable "
+        "WHERE ToyLine = 'Transformers';"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
@@ -205,16 +269,23 @@ def render_transformers():
     transformers_list = cur.fetchall()
     con.close()
     print(transformers_list)
-    return render_template("/toyline/transformers.html", transformers_toys=transformers_list)
+    return render_template("/toyline/transformers.html",
+                           transformers_toys=transformers_list)
 
 
-"""VALUATION WEBPAGE"""
+# VALUATION WEBPAGE
 @app.route('/valuation')
 def render_valuation():
-    query = "SELECT Description, Condition, DecadeMade, PricePaid, image FROM toytable"
+    """Will render the valuation webpage."""
+    query = (
+        "SELECT Description, Condition, DecadeMade, "
+        "PricePaid, image "
+        "FROM toytable"
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -222,11 +293,12 @@ def render_valuation():
     return render_template('valuation.html', toys=toy_list)
 
 
-"""SORT"""
+# SORT
 # Sorting on the ALL DATA WEBPAGE
 # Sorting the Description on the All Data webpage
 @app.route('/sort/1')
 def render_sort1():
+    """Will sort 1 or description."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -235,10 +307,16 @@ def render_sort1():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Location, ToyLine, Condition, "
+        "DecadeMade, Size, PricePaid, image "
+        "FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -249,6 +327,7 @@ def render_sort1():
 # Sorting the location on the All Data webpage
 @app.route('/sort/location')
 def render_sortlocation():
+    """Will sort location."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -257,10 +336,16 @@ def render_sortlocation():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Location, ToyLine, Condition, "
+        "DecadeMade, Size, PricePaid, image "
+        "FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -271,6 +356,7 @@ def render_sortlocation():
 # Sorting the Toyline in the All Data webpage
 @app.route('/sort/toyline')
 def render_sorttoyline():
+    """Will sort toyline."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -279,11 +365,17 @@ def render_sorttoyline():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Location, ToyLine, Condition, "
+        "DecadeMade, Size, PricePaid, image "
+        "FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
 
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -295,6 +387,7 @@ def render_sorttoyline():
 # Sorting the Description on the Valuation webpage
 @app.route('/sort/description')
 def render_sortdescription():
+    """Will sort description."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -303,10 +396,15 @@ def render_sortdescription():
     else:
         new_order = "asc"
 
-    query = "SELECT Description, Condition, DecadeMade, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Condition, DecadeMade, PricePaid, "
+        "image FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -317,6 +415,7 @@ def render_sortdescription():
 # Sorting the Condition in the Valuation webpage
 @app.route('/sort/condition')
 def render_sortcondition():
+    """Will sort condition."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -325,10 +424,15 @@ def render_sortcondition():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Condition, DecadeMade, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Condition, DecadeMade, PricePaid, "
+        "image FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -339,6 +443,7 @@ def render_sortcondition():
 # Sorting the Decade Made on the Valuation webpage
 @app.route('/sort/decademade')
 def render_sortdecademade():
+    """Will sort decade made."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -347,10 +452,15 @@ def render_sortdecademade():
     else:
         new_order = "asc"
 
-    query = "SELECT Description, Condition, DecadeMade, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Condition, DecadeMade, PricePaid, "
+        "image FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
 
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -361,6 +471,7 @@ def render_sortdecademade():
 # Sorting the Price Paid in the Valuation webpage
 @app.route('/sort/pricepaid')
 def render_sortpricepaid():
+    """Will sort price paid."""
     sort = request.args.get('sort')
     order = request.args.get('order', 'asc')
 
@@ -369,10 +480,15 @@ def render_sortpricepaid():
     else:
         new_order = 'asc'
 
-    query = "SELECT Description, Condition, DecadeMade, PricePaid, image FROM toytable ORDER BY " + sort + " " + order
+    query = (
+        "SELECT Description, Condition, DecadeMade, PricePaid, "
+        "image FROM toytable "
+        "ORDER BY " + sort + " " + order
+    )
     con = create_connection(DATABASE)
     cur = con.cursor()
-   
+
+    # Query the DATABASE
     cur.execute(query)
     toy_list = cur.fetchall()
     con.close()
@@ -380,18 +496,31 @@ def render_sortpricepaid():
     return render_template('valuation.html', toys=toy_list, order=new_order)
 
 
-"""SEARCH"""
+# SEARCH
 # Search function
 @app.route("/search", methods=['GET', 'POST'])
 def render_search():
+    """Will Search."""
     search = request.form["search"]
     title = 'Search for "' + search + '"'
-    #title = "Search for " + search
-    query = "SELECT Description, Location, ToyLine, Condition, DecadeMade, Size, PricePaid, image FROM toytable WHERE Description LIKE ? OR Location LIKE ? OR ToyLine LIKE ? OR Condition LIKE ? OR DecadeMade LIKE ? or Size LIKE ? or PricePaid LIKE ?"
+    query = (
+        "SELECT Description, Location, ToyLine, Condition, "
+        "DecadeMade, Size, PricePaid, image "
+        "FROM toytable "
+        "WHERE Description LIKE ? "
+        "OR Location LIKE ? "
+        "OR ToyLine LIKE ? "
+        "OR Condition LIKE ? "
+        "OR DecadeMade LIKE ? "
+        "OR Size LIKE ? "
+        "OR PricePaid LIKE ?"
+    )
     search = "%" + search + "%"
     con = create_connection(DATABASE)
     cur = con.cursor()
-    cur.execute(query,(search, search, search, search, search, search, search))
+    # Query the DATABASE
+    cur.execute(query,
+                (search, search, search, search, search, search, search))
     toy_list = cur.fetchall()
     con.close()
 
@@ -399,4 +528,4 @@ def render_search():
 
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=81)
+    app.run(host='0.0.0.0', port=81)

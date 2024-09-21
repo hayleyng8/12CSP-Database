@@ -2,12 +2,12 @@
 
 {% block main %}
     <h3>Toy Room</h3>
-    <article>
+    <div class="container">
         {% for toyroom in toyroom_toys %}
         <div class="toy-item">
             <img src="/static/image/{{  toyroom[2]  }}" alt="{{  toyroom[1]  }}">
             <p>{{  toyroom[1]  }}</p>
         </div>
         {% endfor %}
-    </article>
+    </div>
 {% endblock %}
